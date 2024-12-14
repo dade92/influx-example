@@ -1,6 +1,6 @@
 ### Push a new measurement
 
-POST http://localhost:8080/api/influx/write?measurement=temperature&field=reading&value=102
+POST http://localhost:8080/api/influx/write?measurement=temperature&field=reading&value=103
 Content-Type: application/json
 Accept: application/json
 

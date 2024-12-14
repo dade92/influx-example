@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir local-env
 cd local-env
 
 docker run -d -p 8086:8086 \
