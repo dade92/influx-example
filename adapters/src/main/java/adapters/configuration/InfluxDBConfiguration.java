@@ -1,6 +1,7 @@
 package adapters.configuration;
 
 import adapters.repository.InfluxDBService;
+import adapters.utils.NowInstantProvider;
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.InfluxDBClientFactory;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -18,6 +19,7 @@ public class InfluxDBConfiguration {
     ) {
         return new InfluxDBService(
             client,
+            new NowInstantProvider(),
             influxDBProperties.bucket,
             influxDBProperties.org
         );

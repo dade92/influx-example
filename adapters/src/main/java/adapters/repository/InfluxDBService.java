@@ -1,5 +1,6 @@
 package adapters.repository;
 
+import adapters.utils.InstantProvider;
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.domain.WritePrecision;
 import com.influxdb.client.write.Point;
@@ -21,11 +22,18 @@ public class InfluxDBService {
         """;
 
     private final InfluxDBClient influxDBClient;
+    private final InstantProvider instantProvider;
     private final String bucket;
     private final String org;
 
-    public InfluxDBService(InfluxDBClient influxDBClient, String bucket, String org) {
+    public InfluxDBService(
+        InfluxDBClient influxDBClient,
+        InstantProvider instantProvider,
+        String bucket,
+        String org
+    ) {
         this.influxDBClient = influxDBClient;
+        this.instantProvider = instantProvider;
         this.bucket = bucket;
         this.org = org;
     }
@@ -34,7 +42,7 @@ public class InfluxDBService {
         Point point = Point
             .measurement(measurement)
             .addField(field, value)
-            .time(Instant.now(), WritePrecision.NS);
+            .time(instantProvider.get(), WritePrecision.S);
 
         influxDBClient.getWriteApiBlocking().writePoint(bucket, org, point);
     }

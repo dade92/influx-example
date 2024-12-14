@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.myprojects</groupId>
-    <artifactId>redis-example</artifactId>
+    <artifactId>influx-example</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <name>influx-example</name>
