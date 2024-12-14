@@ -1,7 +1,7 @@
 package webapp.controllers;
 
 import adapters.repository.InfluxDBService;
-import adapters.repository.Measure;
+import domain.measure.Measure;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,5 +39,4 @@ public class InfluxDBController {
     }
 }
 
-record MeasuresResponse(List<Measure> measures) {
-}
+record MeasuresResponse(List<Measure> measures) {}
