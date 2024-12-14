@@ -1,4 +1,3 @@
 #!/bin/bash
 
-docker stop some-redis
-docker stop my-memcache
+docker stop influxdb:2

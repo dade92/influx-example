@@ -1,5 +1,14 @@
 #!/bin/bash
 
-#docker run --name some-redis --rm -p 6379:6379 -d redis
+cd local-env
 
-docker run --name my-memcache --rm -p 11211:11211 -d memcached
+docker run -d -p 8086:8086 \
+  -v "./data:/var/lib/influxdb2" \
+  -v "./config:/etc/influxdb2" \
+  -e DOCKER_INFLUXDB_INIT_MODE=setup \
+  -e DOCKER_INFLUXDB_INIT_USERNAME=admin \
+  -e DOCKER_INFLUXDB_INIT_PASSWORD=password \
+  -e DOCKER_INFLUXDB_INIT_ORG=example \
+  -e DOCKER_INFLUXDB_INIT_BUCKET=test \
+  influxdb:2
+
