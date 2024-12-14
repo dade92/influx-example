@@ -106,12 +106,6 @@
             <version>1.4.0</version>
             <scope>test</scope>
         </dependency>
-        <!-- InfluxDB Client -->
-        <dependency>
-            <groupId>com.influxdb</groupId>
-            <artifactId>influxdb-client-java</artifactId>
-            <version>6.9.0</version>
-        </dependency>
     </dependencies>
 
     <build>

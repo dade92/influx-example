@@ -18,12 +18,17 @@ public class InfluxDBController {
     }
 
     @PostMapping("/write")
-    public void writeData(
+    public ResponseEntity<?> writeData(
         @RequestParam String measurement,
         @RequestParam String field,
         @RequestParam Double value
     ) {
-        influxDBService.writeData(measurement, field, value);
+        try {
+            influxDBService.writeData(measurement, field, value);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
     @GetMapping("/query")
