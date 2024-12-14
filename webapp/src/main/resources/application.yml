@@ -1,0 +1,5 @@
+influx:
+  url: http://localhost:8086
+  token: your-influxdb-token
+  org: your-organization
+  bucket: your-bucket
