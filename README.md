@@ -1,33 +1,18 @@
-# SPRING EXAMPLE WITH REDIS
+# SPRING EXAMPLE WITH INFLUX-DB
 
-POC with Redis (and memcached) as a cache and Spring Boot. Application contains two APIs, one to store 
-and the other to read objects from the cache.
+POC with Influx DB to write and read data. It uses a local instance of influx-db run using Docker.
 
 ## How to setup
 
-You can set as cache Redis or Memcached using the attribute `enabledCache` inside the yml file and set it as
-`redis` or `memcached` based on the type of cache you want to use. At the moment, you have to manually comment/uncomment
-the run script to change the docker image.
+Run the script `./run-local-environment.sh`. This will run a docker image on port 8086. The application uses a token
+based authentication. To complete the setup, you need to:
+- Create a new token using the influx UI or command line
+- Configure spring to use the new token, injected as an environment variable named `TOKEN`
 
 ## How to use
 
-Application contains two endpoint, one to write data in the cache and the other one to retrieve data from the cache.
-
-Write in the cache:
-
-```http request
-POST http://localhost:8080/user/add
-
-{
-  "name": "Davide"
-}
-```
-
-Read from the cache:
-
-```http request
-GET http://localhost:8080/user
-```
+Application contains two endpoint, one to write data and the other one to retrieve data. You can find sample requests
+in the `./http/test.http` file.
 
 ## Run the entire application
 
