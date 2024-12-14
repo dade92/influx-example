@@ -3,9 +3,11 @@ package adapters.repository;
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.domain.WritePrecision;
 import com.influxdb.client.write.Point;
+import com.influxdb.query.FluxRecord;
 import com.influxdb.query.FluxTable;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 public class InfluxDBService {
@@ -40,12 +42,25 @@ public class InfluxDBService {
         influxDBClient.getWriteApiBlocking().writePoint(bucket, org, point);
     }
 
-    public List<FluxTable> queryData(String measurement, String field) {
+    public List<Measure> queryData(String measurement, String field) {
         String query = QUERY_TEMPLATE
             .replace(":bucket", bucket)
             .replace(":measurement", measurement)
             .replace(":field", field);
 
-        return influxDBClient.getQueryApi().query(query, org);
+        List<FluxTable> tables = influxDBClient.getQueryApi().query(query, org);
+
+        List<Measure> results = new ArrayList<>();
+        for (FluxTable table : tables) {
+            for (FluxRecord record : table.getRecords()) {
+                Instant time = record.getTime();
+                String outputField = record.getField();
+                Object value = record.getValue();
+
+                results.add(new Measure(time, outputField, value));
+            }
+        }
+
+        return results;
     }
 }

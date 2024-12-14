@@ -1,7 +1,8 @@
 package webapp.controllers;
 
 import adapters.repository.InfluxDBService;
-import com.influxdb.query.FluxTable;
+import adapters.repository.Measure;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,10 +27,17 @@ public class InfluxDBController {
     }
 
     @GetMapping("/query")
-    public List<FluxTable> queryData(
+    public ResponseEntity<MeasuresResponse> queryData(
         @RequestParam String measurement,
         @RequestParam String field
     ) {
-        return influxDBService.queryData(measurement, field);
+        return ResponseEntity.ok(
+            new MeasuresResponse(
+                influxDBService.queryData(measurement, field)
+            )
+        );
     }
+}
+
+record MeasuresResponse(List<Measure> measures) {
 }
