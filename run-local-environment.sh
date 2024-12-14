@@ -10,5 +10,7 @@ docker run -d -p 8086:8086 \
   -e DOCKER_INFLUXDB_INIT_PASSWORD=password \
   -e DOCKER_INFLUXDB_INIT_ORG=example \
   -e DOCKER_INFLUXDB_INIT_BUCKET=test \
+  --name influxdb \
+  --rm \
   influxdb:2
 

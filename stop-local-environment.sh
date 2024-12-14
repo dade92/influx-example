@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker stop influxdb:2
+docker stop influxdb
