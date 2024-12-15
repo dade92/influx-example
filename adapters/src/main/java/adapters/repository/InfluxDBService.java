@@ -16,7 +16,7 @@ import java.util.List;
 
 public class InfluxDBService {
 
-    public static final String QUERY_TEMPLATE = """
+    public static final String QUERY = """
         from(bucket: ":bucket")
         |> range(start: :startTime, stop: :endTime)
         |> filter(fn: (r) => r._measurement == ":measurement")
@@ -54,7 +54,7 @@ public class InfluxDBService {
 
     public List<Measure> queryData(String measurement, String field, int timespan) {
         Instant now = instantProvider.get();
-        String query = QUERY_TEMPLATE
+        String query = QUERY
             .replace(":bucket", bucket)
             .replace(":measurement", measurement)
             .replace(":startTime", influxDBDateFormatter.format(now.minus(timespan, ChronoUnit.HOURS)))

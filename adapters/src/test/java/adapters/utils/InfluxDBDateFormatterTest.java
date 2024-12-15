@@ -16,8 +16,10 @@ class InfluxDBDateFormatterTest {
     void formatCorrectly() {
         Instant now = LocalDateTime.of(2024, 12, 15, 9, 58, 1)
             .toInstant(ZoneOffset.UTC);
-        String actual = influxDBDateFormatter.format(now);
 
-        assertEquals("2024-12-15T09:58:01Z", actual);
+        String actual = influxDBDateFormatter.format(now);
+        String expected = "2024-12-15T09:58:01Z";
+
+        assertEquals(expected, actual);
     }
 }

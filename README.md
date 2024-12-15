@@ -16,5 +16,7 @@ in the `./http/test.http` file.
 
 ## Run the entire application
 
-Run the script `run-local-environment.sh`: it will download and run  the local cache instance using Docker.
-Then run the application. You can stop the image running `stop-local-environment.sh` script.
+Run the script `run-local-environment.sh`: it will download and run  the local influxdb instance using Docker.
+Then run the application. 
+
+You can stop the image running `stop-local-environment.sh` script.
