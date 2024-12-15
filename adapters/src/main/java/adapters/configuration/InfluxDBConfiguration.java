@@ -1,6 +1,7 @@
 package adapters.configuration;
 
 import adapters.repository.InfluxDBService;
+import adapters.utils.InfluxDBDateFormatter;
 import adapters.utils.NowInstantProvider;
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.InfluxDBClientFactory;
@@ -20,6 +21,7 @@ public class InfluxDBConfiguration {
         return new InfluxDBService(
             client,
             new NowInstantProvider(),
+            new InfluxDBDateFormatter(),
             influxDBProperties.bucket,
             influxDBProperties.org
         );

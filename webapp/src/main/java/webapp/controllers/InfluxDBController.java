@@ -34,11 +34,12 @@ public class InfluxDBController {
     @GetMapping("/query")
     public ResponseEntity<MeasuresResponse> queryData(
         @RequestParam String measurement,
-        @RequestParam String field
+        @RequestParam String field,
+        @RequestParam String timespan
     ) {
         return ResponseEntity.ok(
             new MeasuresResponse(
-                influxDBService.queryData(measurement, field)
+                influxDBService.queryData(measurement, field, Integer.parseInt(timespan))
             )
         );
     }

@@ -1,11 +1,11 @@
 ### Push a new measurement
 
-POST http://localhost:8080/api/influx/write?measurement=temperature&field=reading&value=103
+POST http://localhost:8080/api/influx/write?measurement=temperature&field=reading&value=11
 Content-Type: application/json
 Accept: application/json
 
 ### retrieve measure given the measurement and the given field
 
-GET http://localhost:8080/api/influx/query?measurement=temperature&field=reading
+GET http://localhost:8080/api/influx/query?measurement=temperature&field=reading&timespan=24
 Content-Type: application/json
 Accept: application/json
