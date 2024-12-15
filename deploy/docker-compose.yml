@@ -1,0 +1,25 @@
+services:
+  influxdb:
+    image: influxdb:2
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=password
+      - DOCKER_INFLUXDB_INIT_ORG=home
+      - DOCKER_INFLUXDB_INIT_BUCKET=temperature
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+      - influxdb_config:/etc/influxdb2
+    restart: always
+  app:
+    image: davide92/influx-example
+    container_name: app
+    ports:
+      - "8080:8080"
+
+volumes:
+  influxdb_data:
+  influxdb_config:

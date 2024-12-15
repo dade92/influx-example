@@ -1,0 +1,5 @@
+influx:
+  url: http://influxdb:8086
+  token: ${TOKEN}
+  org: home
+  bucket: temperature
