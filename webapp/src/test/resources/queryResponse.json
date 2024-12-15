@@ -1,0 +1,14 @@
+{
+  "measures": [
+    {
+      "time": "2024-12-15T10:00:00Z",
+      "field": "reading",
+      "value": 11.0
+    },
+    {
+      "time": "2024-12-16T10:00:00Z",
+      "field": "reading",
+      "value": 12.0
+    }
+  ]
+}
