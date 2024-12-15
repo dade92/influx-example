@@ -1,6 +1,7 @@
 package webapp.controllers;
 
 import adapters.repository.InfluxDBService;
+import adapters.repository.WriteDataRequest;
 import domain.measure.Measure;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,16 +31,19 @@ class InfluxDBControllerTest {
     private InfluxDBService influxDBService;
 
     private static final String QUERY_RESPONSE = Fixtures.Companion.readJson("/queryResponse.json");
+    private static final String WRITE_REQUEST = Fixtures.Companion.readJson("/writeRequest.json");
 
     @Test
     void writeData() throws Exception {
-        doNothing().when(influxDBService).writeData("temperature", "reading", 11d);
+        WriteDataRequest expectedRequest = new WriteDataRequest("temperature", "reading", 50d);
+        doNothing().when(influxDBService).writeData(expectedRequest);
 
-        mockMvc.perform(post("/api/influx/write?measurement=temperature&field=reading&value=11")
-                .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isNoContent());
+        mockMvc.perform(post("/api/influx/write")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(WRITE_REQUEST)
+        ).andExpect(status().isNoContent());
 
-        verify(influxDBService).writeData("temperature", "reading", 11d);
+        verify(influxDBService).writeData(expectedRequest);
     }
 
     @Test

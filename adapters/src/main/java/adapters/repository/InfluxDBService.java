@@ -43,10 +43,10 @@ public class InfluxDBService {
         this.org = org;
     }
 
-    public void writeData(String measurement, String field, Double value) {
+    public void writeData(WriteDataRequest request) {
         Point point = Point
-            .measurement(measurement)
-            .addField(field, value)
+            .measurement(request.measurement())
+            .addField(request.field(), request.value())
             .time(instantProvider.get(), WritePrecision.S);
 
         influxDBClient.getWriteApiBlocking().writePoint(bucket, org, point);
