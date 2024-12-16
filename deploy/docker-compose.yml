@@ -9,7 +9,7 @@ services:
       - DOCKER_INFLUXDB_INIT_USERNAME=admin
       - DOCKER_INFLUXDB_INIT_PASSWORD=password
       - DOCKER_INFLUXDB_INIT_ORG=home
-      - DOCKER_INFLUXDB_INIT_BUCKET=temperature
+      - DOCKER_INFLUXDB_INIT_BUCKET=home_measures
     volumes:
       - influxdb_data:/var/lib/influxdb2
       - influxdb_config:/etc/influxdb2
