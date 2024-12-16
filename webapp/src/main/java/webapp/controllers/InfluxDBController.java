@@ -3,6 +3,8 @@ package webapp.controllers;
 import adapters.repository.InfluxDBService;
 import adapters.repository.WriteDataRequest;
 import domain.measure.Measure;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,7 @@ import java.util.List;
 public class InfluxDBController {
 
     private final InfluxDBService influxDBService;
+    private final Logger logger = LoggerFactory.getLogger(InfluxDBController.class);
 
     public InfluxDBController(InfluxDBService influxDBService) {
         this.influxDBService = influxDBService;
@@ -26,6 +29,7 @@ public class InfluxDBController {
             influxDBService.writeData(request.toRequest());
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
+            logger.error("Error while pushing metric due to ", e);
             return ResponseEntity.internalServerError().build();
         }
     }
