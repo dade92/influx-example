@@ -5,9 +5,9 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "measurement": "humidity",
+  "measurement": "temperature",
   "field": "reading",
-  "value": 64
+  "value": 18
 }
 
 ### retrieve measure given the measurement and the given field

@@ -20,7 +20,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - TOKEN=B061P0fQmnDKVISFuJU6SYumgp66fND7Rf0l5IITlYLurgkdjEtPirQ89caWGtJN0MhCpVnqSj88_-7yqNWJig==
+      - TOKEN=${INFLUXDB_AUTH_TOKEN}
 
 volumes:
   influxdb_data:

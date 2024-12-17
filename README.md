@@ -16,7 +16,16 @@ in the `./http/test.http` file.
 
 ## Run the entire application
 
+### Run for testing
+
 Run the script `run-local-environment.sh`: it will download and run  the local influxdb instance using Docker.
 Then run the application. 
 
 You can stop the image running `stop-local-environment.sh` script.
+In any case, you have to generate the auth token manually after the first run of influx, and inject as env variables.
+
+### Run in production
+
+You can also run the entire app (webapp + influxdb) using the script `./run.sh`. This
+will use docker compose to run both the app and the db mounting a docker volume too.
+You have to generate the auth token manually after the first run of influx, and inject as env variables.
