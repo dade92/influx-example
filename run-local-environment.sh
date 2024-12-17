@@ -1,6 +1,8 @@
 #!/bin/bash
 
-mkdir local-env
+if [ ! -d "local-env" ]; then
+  mkdir local-env
+fi
 cd local-env
 
 docker run -d -p 8086:8086 \

@@ -20,7 +20,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - TOKEN=${INFLUXDB_AUTH_TOKEN}
+      - TOKEN=${INFLUXDB_AUTH_TOKEN}    #env var in your OS
 
 volumes:
   influxdb_data:
