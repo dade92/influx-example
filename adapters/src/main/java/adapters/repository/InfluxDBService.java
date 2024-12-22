@@ -61,8 +61,6 @@ public class InfluxDBService {
             .replace(":endTime", influxDBDateFormatter.format(now))
             .replace(":field", field);
 
-        System.out.println(query);
-
         List<FluxTable> tables = influxDBClient.getQueryApi().query(query, org);
 
         List<Measure> results = new ArrayList<>();
