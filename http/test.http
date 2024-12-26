@@ -7,7 +7,7 @@ Accept: application/json
 {
   "measurement": "temperature",
   "field": "reading",
-  "value": 18.2
+  "value": 18.8
 }
 
 ### retrieve measure given the measurement and the given field
