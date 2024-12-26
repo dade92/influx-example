@@ -1,0 +1,5 @@
+influx:
+  url: https://eu-central-1-1.aws.cloud2.influxdata.com
+  token: ${TOKEN}
+  org: 9105c052a948d5d5
+  bucket: test

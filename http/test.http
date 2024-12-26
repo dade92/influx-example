@@ -12,6 +12,6 @@ Accept: application/json
 
 ### retrieve measure given the measurement and the given field
 
-GET {{host}}/api/influx/query?measurement=temperature&field=reading&timespan=24
+GET {{host}}/api/influx/query?measurement=temperature&field=reading&timespan=168
 Content-Type: application/json
 Accept: application/json
