@@ -12,10 +12,10 @@ The application uses a token based authentication. To complete the setup, you ne
 
 ## How to use
 
-Application contains two endpoint, one to write data and the other one to retrieve data. You can find sample requests
+Application contains two APIs, one to write data and the other one to retrieve data. You can find sample requests
 in the `./http/test.http` file.
 
-The two endpoints are the following:
+The two APIs are the following:
 
 To write data:
 ```http request
