@@ -4,7 +4,8 @@ POC with Influx DB to write and read data. It uses a local instance of influx-db
 
 ## How to setup
 
-Run the script `./run-local-environment.sh`. This will run a docker image on port `8086`.
+Run the script `./run-local-environment.sh`. This will first thing first create the `local-env` folder if not present,
+then run a docker image on port `8086`.
 The application uses a token based authentication. To complete the setup, you need to:
 
 - Create a new token using the influx UI or command line
@@ -18,6 +19,7 @@ in the `./http/test.http` file.
 The two APIs are the following:
 
 To write data:
+
 ```http request
 POST /api/influx/write
 
@@ -29,6 +31,7 @@ POST /api/influx/write
 ```
 
 To read data in the latest N hours:
+
 ```http request
 GET /api/influx/query?measurement=temperature&field=reading&timespan=24
 ```
@@ -52,3 +55,6 @@ and inject as environment variable in your OS.
 Then run the entire app (webapp + influxdb) using the script `./run.sh`. This
 will use docker compose to run both the app and the db mounting a docker volume too (for persistent storage on the
 machine).
+
+The project contains also a configuration file to point to a cloud influx-db instance. In order to configure it,
+open the file `resources/application-cloud.yml` and change the host url.
